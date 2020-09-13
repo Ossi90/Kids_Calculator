@@ -1,0 +1,14 @@
+.buttons{
+        -fx-text-alignment: center;
+        -fx-font-size:40 px;
+        -fx-min-width: 100px;}
+
+
+
+#minusValue,#zero,#dot,#equal{
+        : 10px;
+}
+
+#textArea{
+        -fx-control-inner-background: lightgray;
+}
