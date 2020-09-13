@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane fx:id="splitPane" disable="false" dividerPositions="0.2, 0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+  <items>
+      <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        </items>
+      </SplitPane>
+      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0">
+         <opaqueInsets>
+            <Insets top="20.0" />
+         </opaqueInsets>
+         <font>
+            <Font name="Arial" size="61.0" />
+         </font></TextArea>
+      <GridPane alignment="BOTTOM_CENTER" hgap="10" vgap="10">
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+         <children>
+            <Button fx:id="seven" onAction="#seven" mnemonicParsing="false" styleClass="buttons" text="7" GridPane.columnIndex="1" GridPane.rowIndex="1">
+
+      </Button>
+         </children>
+          <children>
+              <Button mnemonicParsing="false" onAction="#eight" styleClass="buttons" text="8" GridPane.columnIndex="2" GridPane.rowIndex="1">
+
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="nine" onAction="#nine" mnemonicParsing="false" styleClass="buttons" text="9" GridPane.columnIndex="3" GridPane.rowIndex="1">
+
+        </Button>
+          </children>
+
+                <children>
+              <Button fx:id="four" onAction="#four" mnemonicParsing="false" styleClass="buttons" text="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="five" onAction="#five" mnemonicParsing="false" styleClass="buttons" text="5" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="six" onAction="#six" mnemonicParsing="false" styleClass="buttons" text="6" GridPane.columnIndex="3" GridPane.rowIndex="2">
+        </Button>
+          </children>
+
+                <children>
+              <Button fx:id="one" onAction="#one" mnemonicParsing="false" styleClass="buttons" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        </Button>
+          </children>
+          <children>
+              <Button  fx:id="two" onAction="#two" mnemonicParsing="false" styleClass="buttons" text="2" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="three" onAction="#three" mnemonicParsing="false" styleClass="buttons" text="3" GridPane.columnIndex="3" GridPane.rowIndex="3">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="zero" onAction="#zero" mnemonicParsing="false" styleClass="buttons" text="0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="dot" onAction="#dot" mnemonicParsing="false" styleClass="buttons" text="." GridPane.columnIndex="3" GridPane.rowIndex="4">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="equal" mnemonicParsing="false" styleClass="buttons" text="=" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
+         </Button>
+          </children>
+          <children>
+              <Button fx:id="minusValue" mnemonicParsing="false" styleClass="buttons" text="-x" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="plus" onAction="#plus" mnemonicParsing="false" styleClass="buttons" text="+" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="minus" onAction="#minus" mnemonicParsing="false" styleClass="buttons" text="–" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+        </Button>
+          </children>
+          <children>
+              <Button fx:id="multi"  onAction="#multi" alignment="BOTTOM_CENTER" mnemonicParsing="false" styleClass="buttons" text="x" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
+        </Button>
+          </children>
+
+          <children>
+              <Button fx:id="div" onAction="#div" mnemonicParsing="false" styleClass="buttons" text="÷" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="0">
+              </Button>
+          </children>
+          <children>
+              <Button fx:id="squareRoot" mnemonicParsing="false" styleClass="buttons" text="√x" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="0">
+              </Button>
+          </children>
+          <children>
+              <Button fx:id="square" onAction="#square" mnemonicParsing="false" styleClass="buttons" text="x²" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="0">
+              </Button>
+          </children>
+          <children>
+              <Button fx:id="clear" onAction="#clear" mnemonicParsing="false" styleClass="buttons" text="C" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              </Button>
+          </children>
+      </GridPane>
+  </items>
+   <padding>
+      <Insets bottom="25.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets left="15.0" right="15.0" top="15.0" />
+   </opaqueInsets>
+</SplitPane>
