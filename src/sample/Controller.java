@@ -1,52 +1,44 @@
 package sample;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import org.w3c.dom.Text;
 
-
-import java.net.URISyntaxException;
-import java.util.jar.Attributes;
 
 public class Controller {
-    private String input = "";
+    @FXML
+    private TextArea textArea;
+    private float fValue;
+    private float intOperator;
+    private String inputValue = "";
+    private String tempInput = "";
+    private String tempInputTwo= "";
+    private String UIoperator = "";
+    private ArrayList <String> value = new ArrayList<>();
+    private ArrayList <Float> input = new ArrayList();
+    Calculator calculator = new Calculator();
+    private static int iterator = 0;
 
     @FXML
     private Button seven;
-
-    @FXML
-    private TextArea textArea;
-
     @FXML
     private Button nine;
-
     @FXML
     private Button four;
-
     @FXML
     private Button five;
-
     @FXML
     private Button six;
-
     @FXML
     private Button one;
-
     @FXML
     private Button two;
-
     @FXML
     private Button three;
-
     @FXML
     private Button zero;
-
     @FXML
     private Button clear;
-
     @FXML
     private Button dot;
     @FXML
@@ -66,121 +58,183 @@ public class Controller {
     @FXML
     private Button squareRoot;
 
-   /* public void initialize(){
+
+    /*public void initialize(){
 
        seven.setOnAction(actionEvent -> {
-           input += "7";
-           addToTextField();
+          System.out.println(seven);
+
        });
     }*/
 
+  public ArrayList setArray(){
+      ArrayList <String> capacity = new ArrayList();
+      capacity.add("");
+
+     return capacity;
+  }
+
     @FXML
     public void clear (){
-        clearText();
+      clearText();
     }
     @FXML
     public void seven(){
-        input += "7";
+        inputValue = "7";
         addToTextField();
     }
-
     @FXML
     public void eight(){
-       input += "8";
+       inputValue = "8";
        addToTextField();
     }
-
     @FXML
     public void nine(){
-        input += "9";
+        inputValue = "9";
         addToTextField();
     }
-
     @FXML
     public void four(){
-        input += "4";
+        inputValue = "4";
         addToTextField();
     }
-
     @FXML
     public void five(){
-        input += "5";
+        inputValue = "5";
         addToTextField();
     }
-
     @FXML
     public void six(){
-        input += "6";
+        inputValue = "6";
         addToTextField();
     }
-
     @FXML
     public void one(){
-        input += "1";
+        inputValue = "1";
         addToTextField();
     }
-
     @FXML
     public void two(){
-        input += "2";
+        inputValue = "2";
         addToTextField();
     }
-
     @FXML
     public void three(){
-        input += "3";
+        inputValue = "3";
         addToTextField();
     }
-
     @FXML
     public void zero(){
-        input += "0";
+        inputValue = "0";
         addToTextField();
     }
-
     @FXML
     public void dot(){
-        input += ".";
+        inputValue += ".";
         addToTextField();
     }
-
     @FXML
     public void plus(){
-        input += " + ";
+      intOperator = -1;
+        UIoperator = "+";
         addToTextField();
     }
-
     @FXML
     public void minus(){
-        input += " – ";
+        intOperator = -2;
+        UIoperator = "–";
         addToTextField();
     }
-
     @FXML
     public void multi(){
-        input += " x ";
+        intOperator = -3;
+        UIoperator = "x";
         addToTextField();
     }
-
     @FXML
     public void div(){
-        input += " ÷ ";
+        intOperator = -4;
+        UIoperator = "÷";
+        addToTextField();
+    }
+    @FXML
+    public void square(){
+        intOperator = -5;
+        inputValue += "²";
         addToTextField();
     }
 
     @FXML
-    public void square(){
-        input += "²";
-        addToTextField();
+    public void equal(){
+        intOperator = -6;
+        UIoperator = "=";
+        addValuesToList(tempInputTwo);
+        textArea.setText("= "+calculator.calculate(input));
+      /*  if (calculator.caclulateTest(value).equals("Error")){
+            error();
+        }else{
+            System.out.println(calculator.caclulateTest(value));
+            addToTextField();
+        }*/
+
+
     }
 
     public void clearText(){
-        input ="";
+        intOperator = 0;
+        tempInput = "";
+        tempInputTwo= "";
+        inputValue ="";
+        UIoperator ="";
+        iterator = 0;
         textArea.clear();
+        input.clear();
+        value.clear();
     }
 
+
     public void addToTextField(){
-        textArea.setText(input);
+
+        if(UIoperator ==""){
+            tempInput += inputValue;
+            tempInputTwo += inputValue;
+            textArea.setText(tempInput);
+            inputValue="";
+        }else{
+            addValuesToList(tempInputTwo);
+            tempInput += UIoperator;
+            textArea.setText(tempInput);
+            addOperatorsToList(UIoperator);
+            UIoperator ="";
+            inputValue="";
+            tempInputTwo = "";
+        }
+    }
+
+    public void addValuesToList(String val){
+      try{
+          float f=Float.parseFloat(val);
+      value.add(val);
+      input.add(f);
+      System.out.println(input);}
+      catch(java.lang.NumberFormatException e){
+
+          textArea.setText("Please Add a Value First");
+      }
+    }
+    public void addOperatorsToList(String val){
+       try{value.add(val);
+           input.add(intOperator);
+        System.out.println(value);}
+       catch (java.lang.NumberFormatException e){
+           clear();
+           textArea.setText("Please Enter A Value First");
+       }
+    }
+
+    public void error(){
+      clear();
+      textArea.setText("error");
     }
 
 }
