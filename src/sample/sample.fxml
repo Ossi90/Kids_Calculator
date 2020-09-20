@@ -84,7 +84,7 @@
         </Button>
           </children>
           <children>
-              <Button fx:id="equal" mnemonicParsing="false" styleClass="buttons" text="=" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
+              <Button fx:id="equal" onAction="#equal" mnemonicParsing="false" styleClass="buttons" text="=" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
          </Button>
           </children>
           <children>
@@ -109,7 +109,7 @@
               </Button>
           </children>
           <children>
-              <Button fx:id="squareRoot" mnemonicParsing="false" styleClass="buttons" text="√x" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="0">
+              <Button fx:id="squareRoot"  mnemonicParsing="false" styleClass="buttons" text="√x" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="0">
               </Button>
           </children>
           <children>
