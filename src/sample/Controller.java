@@ -8,7 +8,6 @@ import javafx.scene.control.TextArea;
 public class Controller {
     @FXML
     private TextArea textArea;
-    private float fValue;
     private float intOperator;
     private String inputValue = "";
     private String tempInput = "";
@@ -55,6 +54,8 @@ public class Controller {
     private Button div;
     @FXML
     private Button square;
+    @FXML
+    private Button root;
     @FXML
     private Button squareRoot;
 
@@ -157,12 +158,20 @@ public class Controller {
         UIoperator = "÷";
         addToTextField();
     }
-    @FXML
+ @FXML
     public void square(){
         intOperator = -5;
-        inputValue += "²";
+        UIoperator += "²";
         addToTextField();
     }
+
+    @FXML
+    public void root(){
+        intOperator = -6;
+        UIoperator += "√";
+        addToTextField();
+    }
+
 
     @FXML
     public void equal(){
@@ -216,7 +225,8 @@ public class Controller {
           float f=Float.parseFloat(val);
       value.add(val);
       input.add(f);
-      System.out.println(input);}
+     //System.out.println(input);
+      }
       catch(java.lang.NumberFormatException e){
 
           textArea.setText("Please Add a Value First");
@@ -225,7 +235,8 @@ public class Controller {
     public void addOperatorsToList(String val){
        try{value.add(val);
            input.add(intOperator);
-        System.out.println(value);}
+      //  System.out.println(value);
+             }
        catch (java.lang.NumberFormatException e){
            clear();
            textArea.setText("Please Enter A Value First");
