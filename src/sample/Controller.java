@@ -1,8 +1,13 @@
 package sample;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 public class Controller {
@@ -15,8 +20,14 @@ public class Controller {
     private String UIoperator = "";
     private ArrayList <String> value = new ArrayList<>();
     private ArrayList <Float> input = new ArrayList();
+    //String path = System.getProperty("user.dir");
+    Path currentRelativePath = Paths.get("");
+    String path = currentRelativePath.toAbsolutePath().toString();
+
     Calculator calculator = new Calculator();
-    private static int iterator = 0;
+    Media voice;
+    MediaPlayer mediaPlayer;
+
 
     @FXML
     private Button seven;
@@ -111,8 +122,12 @@ public class Controller {
     }
     @FXML
     public void one(){
+        //System.out.println(path);
+        voice = new Media(new File(path+"\\src\\sample\\Voice_Clips\\1.m4a").toURI().toString());
+        mediaPlayer = new MediaPlayer(voice);
         inputValue = "1";
         addToTextField();
+        mediaPlayer.setAutoPlay(true);
     }
     @FXML
     public void two(){
@@ -195,7 +210,6 @@ public class Controller {
         tempInputTwo= "";
         inputValue ="";
         UIoperator ="";
-        iterator = 0;
         textArea.clear();
         input.clear();
         value.clear();
