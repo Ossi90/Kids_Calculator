@@ -4,33 +4,27 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 public class Calculator {
-public float outcome = 0;
+    public float outcome;
 
     public Calculator() {
 
     }
 
-
-
-  /*  public String caclulateTest(ArrayList inputs) {
-        int x = 0;
-       try{ if (inputs.get(0) instanceof String) {
-            return "Error";
-        }
-       }catch(IndexOutOfBoundsException e){
-           return "No Value Entered";
-       }
-
-        return "YES";
-
-    }
-*/
     public float calculate(ArrayList <Float> input){
+       // System.out.println(input);
+
+        input = isSquare(input);
+        input = isRoot(input);
+        input = isMultiOrDiv(input);
+        outcome = isPlusOrMinus(input);
+        System.out.println(outcome);
+        return outcome;
+    }
+
+    public float isPlusOrMinus(ArrayList<Float> input){
 
         float x = 0;
         float y = 0;
-
-       input = isMultiOrDiv(input);
 
         for(int i = 1; i < input.size(); i+=2){
             if(input.get(i) == -1.0){
@@ -45,32 +39,60 @@ public float outcome = 0;
                 outcome=(x-y);
                 input.set(i+1,outcome);
             }
-
-
         }
-            System.out.println(outcome);
+
         return outcome;
     }
+    public ArrayList isMultiOrDiv(ArrayList <Float> input) {
 
-   public ArrayList isMultiOrDiv(ArrayList <Float> input){
-float zero = 0;
+        int i = 1;
+        while (i< input.size()){
+            if(input.get(i) == -3.0){
+                outcome = input.get(i-1)*input.get(i+1);
+                input.set(i-1,outcome);
+                input.remove(i);
+                input.remove(i);
+            }else if(input.get(i) == -4.0){
+                outcome = input.get(i-1)/input.get(i+1);
+                input.set(i-1,outcome);
+                input.remove(i);
+                input.remove(i);
+            }else{
+                i+=2;
+            }
+        }
+        System.out.println(input);
+        return input;
+    }
+
+    public ArrayList isRoot(ArrayList<Float> input){
+        double rootTemp = 0;
+        float root = 0;
+        for(int i = 0; i < input.size(); i+=2){
+            if(input.get(i) == -6.0){
+                rootTemp = (double)input.get(i+1);
+                rootTemp = Math.sqrt(rootTemp);
+                root = (float)rootTemp;
+                System.out.println(root + " hehehehere");
+                outcome = root;
+                input.set(i+1,outcome);
+                input.remove(i);
+            }
+        }
+
+        return input;
+    }
+
+   public ArrayList isSquare(ArrayList <Float> input){
+       float zero = 0;
        for(int i = 1; i < input.size(); i+=2){
-           if(input.get(i) == -3.0){
-               outcome = input.get(i-1)*input.get(i+1);
-              input.set(i-1,outcome);
-              input.set(i+1,outcome);
-              input.set(i,zero);
-           }
-
-           if(input.get(i) == -4.0){
-               outcome = input.get(i-1)/input.get(i+1);
+           if(input.get(i) == -5.0){
+               outcome = input.get(i-1)*input.get(i-1);
                input.set(i-1,outcome);
-               input.set(i+1,outcome);
-               input.set(i,zero);
+               input.remove(i);
            }
-       }
-    System.out.println(input);
-       return input;
+           }
+        return input;
    }
 
 }
