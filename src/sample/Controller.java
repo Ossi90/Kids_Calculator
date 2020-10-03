@@ -1,5 +1,4 @@
 package sample;
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,12 +19,11 @@ public class Controller {
     private String UIoperator = "";
     private ArrayList <String> value = new ArrayList<>();
     private ArrayList <Float> input = new ArrayList();
-    //String path = System.getProperty("user.dir");
     Path currentRelativePath = Paths.get("");
     String path = currentRelativePath.toAbsolutePath().toString();
-
+    Voice voice = new Voice();
     Calculator calculator = new Calculator();
-    Media voice;
+    Media media;
     MediaPlayer mediaPlayer;
 
 
@@ -93,50 +91,58 @@ public class Controller {
     @FXML
     public void seven(){
         inputValue = "7";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
     public void eight(){
        inputValue = "8";
+        voice.readOperation(inputValue);
        addToTextField();
     }
     @FXML
     public void nine(){
         inputValue = "9";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
     public void four(){
         inputValue = "4";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
     public void five(){
         inputValue = "5";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
     public void six(){
         inputValue = "6";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
     public void one(){
-        //System.out.println(path);
-        voice = new Media(new File(path+"\\src\\sample\\Voice_Clips\\1.m4a").toURI().toString());
-        mediaPlayer = new MediaPlayer(voice);
+       // voice = new Media(new File(path+"\\src\\sample\\Voice_Clips\\1.m4a").toURI().toString());
+        //mediaPlayer = new MediaPlayer(voice);
         inputValue = "1";
+        voice.readOperation(inputValue);
         addToTextField();
-        mediaPlayer.setAutoPlay(true);
+        //mediaPlayer.setAutoPlay(true);
     }
     @FXML
     public void two(){
         inputValue = "2";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
     public void three(){
         inputValue = "3";
+        voice.readOperation(inputValue);
         addToTextField();
     }
     @FXML
@@ -147,36 +153,42 @@ public class Controller {
     @FXML
     public void dot(){
         inputValue += ".";
+        voice.readOperator(inputValue);
         addToTextField();
     }
     @FXML
     public void plus(){
       intOperator = -1;
         UIoperator = "+";
+        voice.readOperator(UIoperator);
         addToTextField();
     }
     @FXML
     public void minus(){
         intOperator = -2;
         UIoperator = "–";
+        voice.readOperator(UIoperator);
         addToTextField();
     }
     @FXML
     public void multi(){
         intOperator = -3;
         UIoperator = "x";
+        voice.readOperator(UIoperator);
         addToTextField();
     }
     @FXML
     public void div(){
         intOperator = -4;
         UIoperator = "÷";
+        voice.readOperator(UIoperator);
         addToTextField();
     }
  @FXML
     public void square(){
         intOperator = -5;
         UIoperator += "²";
+        voice.readOperator(UIoperator);
         addToTextField();
     }
 
@@ -184,22 +196,21 @@ public class Controller {
     public void root(){
         intOperator = -6;
         UIoperator += "√";
+        voice.readOperator(UIoperator);
         addToTextField();
     }
 
 
     @FXML
-    public void equal(){
+    public void equal() throws InterruptedException {
         intOperator = -6;
         UIoperator = "=";
+        voice.readOperator(UIoperator);
         addValuesToList(tempInputTwo);
-        textArea.setText("= "+calculator.calculate(input));
-      /*  if (calculator.caclulateTest(value).equals("Error")){
-            error();
-        }else{
-            System.out.println(calculator.caclulateTest(value));
-            addToTextField();
-        }*/
+        float outcome = calculator.calculate(input);
+        voice.readOutcome(outcome);
+        textArea.setText("= "+outcome );
+
 
 
     }
@@ -210,6 +221,7 @@ public class Controller {
         tempInputTwo= "";
         inputValue ="";
         UIoperator ="";
+        voice.readOperator("clear");
         textArea.clear();
         input.clear();
         value.clear();
@@ -239,7 +251,6 @@ public class Controller {
           float f=Float.parseFloat(val);
       value.add(val);
       input.add(f);
-     //System.out.println(input);
       }
       catch(java.lang.NumberFormatException e){
 
@@ -249,7 +260,7 @@ public class Controller {
     public void addOperatorsToList(String val){
        try{value.add(val);
            input.add(intOperator);
-      //  System.out.println(value);
+
              }
        catch (java.lang.NumberFormatException e){
            clear();

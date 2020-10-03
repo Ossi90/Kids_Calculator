@@ -11,7 +11,6 @@ public class Calculator {
     }
 
     public float calculate(ArrayList <Float> input){
-       // System.out.println(input);
 
         input = isSquare(input);
         input = isRoot(input);
@@ -61,7 +60,6 @@ public class Calculator {
                 i+=2;
             }
         }
-        System.out.println(input);
         return input;
     }
 
@@ -73,7 +71,6 @@ public class Calculator {
                 rootTemp = (double)input.get(i+1);
                 rootTemp = Math.sqrt(rootTemp);
                 root = (float)rootTemp;
-                System.out.println(root + " hehehehere");
                 outcome = root;
                 input.set(i+1,outcome);
                 input.remove(i);
