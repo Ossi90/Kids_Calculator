@@ -1,2 +1,2 @@
 # Kids_Calculator
-Talking calculator for kids (Still in process)
+Talking JavaFX calculator (still in process) made by me and my two children. The Calculator uses sound clips from my two girls to read out any action made  
